@@ -1,0 +1,113 @@
+<div class="top-header">
+
+  <div class="logo-section">
+
+    <h1>Employee Management System</h1>
+
+  </div>
+
+  <div class="header-buttons">
+
+    <button class="theme-btn" (click)="themeService.toggleTheme()">
+      Toggle Theme
+    </button>
+
+    <button class="theme-btn" *ngIf="roleService.isAdmin()" (click)="addEmployee()">
+
+      Add Employee
+
+    </button>
+
+    <button class="theme-btn" (click)="logout()">
+      Logout
+    </button>
+
+  </div>
+
+</div>
+<div class="dashboard-container">
+
+  <div class="filter-section">
+
+    <select [(ngModel)]="selectedDepartment" (change)="applyFilters()">
+
+      <option value="">
+        All Departments
+      </option>
+
+      <option value="IT">
+        IT
+      </option>
+
+      <option value="HR">
+        HR
+      </option>
+
+    </select>
+
+    <select [(ngModel)]="selectedStatus" (change)="applyFilters()">
+
+      <option value="">
+        All Status
+      </option>
+
+      <option value="Active">
+        Active
+      </option>
+
+      <option value="Inactive">
+        Inactive
+      </option>
+
+    </select>
+
+  </div>
+
+  <ejs-grid [dataSource]="employeeList()" [allowPaging]="true" [allowSorting]="true" [toolbar]="toolbar"
+    [pageSettings]="pageSettings">
+
+    <e-columns>
+      <e-column field="name" headerText="Name">
+      </e-column>
+
+      <e-column field="email" headerText="Email">
+      </e-column>
+
+      <e-column field="department" headerText="Department">
+      </e-column>
+
+      <e-column field="status" headerText="Status">
+      </e-column>
+
+      <e-column headerText="Actions" width="250" [template]="actionTemplate">
+
+      </e-column>
+
+    </e-columns>
+
+  </ejs-grid>
+  <ng-template #actionTemplate let-data>
+
+    <div class="action-buttons">
+
+      <button (click)="viewEmployee(data)">
+        View
+      </button>
+
+      <button *ngIf="roleService.isAdmin()" (click)="editEmployee(data)">
+
+        Edit
+
+      </button>
+
+      <button *ngIf="roleService.isAdmin()" (click)="deleteEmployee(data)">
+
+        Delete
+
+      </button>
+
+    </div>
+
+  </ng-template>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="detail-wrapper" [ngClass]="{
+    'dark-theme-card': isDarkTheme,
+    'light-theme-card': !isDarkTheme
+  }">
+
+  <div class="page-header">
+    <h1>Employee Details</h1>
+    <p>View complete employee information</p>
+  </div>
+
+  <div class="detail-container" *ngIf="employee">
+
+    <div class="employee-card">
+
+      <img *ngIf="employee.image" [src]="employee.image" class="employee-image" />
+
+      <h2>{{ employee.name }}</h2>
+
+      <p><strong>Email:</strong> {{ employee.email }}</p>
+
+      <p><strong>Department:</strong> {{ employee.department }}</p>
+
+      <p><strong>Status:</strong> {{ employee.status }}</p>
+
+      <p><strong>Role:</strong> {{ employee.role }}</p>
+
+    </div>
+
+  </div>
+
+</div>

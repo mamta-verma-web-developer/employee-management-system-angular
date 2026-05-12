@@ -1,0 +1,23 @@
+{
+  "employees": [
+    {
+      "name": "Jacob",
+      "email": "j@gmail.com",
+      "department": "HR",
+      "status": "Active",
+      "role": "User",
+      "image": "blob:http://localhost:4200/6cc363af-4faf-400d-ac96-025efccdc8d7",
+      "id": "4fsXHEH4iuo"
+    },
+    {
+      "name": "Ritika ",
+      "email": "r@gmail.com",
+      "department": "HR ",
+      "status": "Active",
+      "role": "User",
+      "image": "blob:http://localhost:4200/426ba218-8a7d-49c5-94a3-aec66aff9247",
+      "id": "LjCqv112GSk"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

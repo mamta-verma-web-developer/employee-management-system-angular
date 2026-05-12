@@ -1,0 +1,320 @@
+/* ================================= */
+/* SYNCFUSION */
+/* ================================= */
+
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-angular-grids/styles/material.css";
+
+/* ================================= */
+/* GLOBAL */
+/* ================================= */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  /* LIGHT THEME */
+  background: #ffffff;
+  color: #881337;
+}
+
+/* ================================= */
+/* COMMON */
+/* ================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+/* ================================= */
+/* BUTTONS */
+/* ================================= */
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  background: #f9a8d4;
+  color: #881337;
+
+  font-weight: 600;
+}
+
+button:hover {
+  background: #f472b6;
+  color: white;
+}
+
+/* ================================= */
+/* SELECT */
+/* ================================= */
+
+select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #f9a8d4;
+  min-width: 180px;
+  background: white;
+  color: #881337;
+}
+
+/* ================================= */
+/* GRID */
+/* ================================= */
+
+.e-grid {
+  width: 100%;
+  height: auto;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  border: none !important;
+
+  background: white !important;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ================================= */
+/* GRID HEADER */
+/* ================================= */
+
+.e-grid .e-headercell {
+  background: #f9a8d4 !important;
+
+  color: white !important;
+
+  font-weight: 600;
+}
+
+/* ================================= */
+/* GRID ROW HOVER */
+/* ================================= */
+
+.e-grid .e-row:hover {
+  background: #ffe4e6 !important;
+}
+
+/* ================================= */
+/* GRID PAGER */
+/* ================================= */
+
+.e-gridpager {
+  padding: 12px !important;
+}
+
+.e-pager {
+  display: flex !important;
+
+  justify-content: flex-end !important;
+
+  align-items: center;
+}
+
+.e-pager .e-currentitem {
+  background: #f472b6 !important;
+
+  color: white !important;
+
+  border-radius: 4px;
+}
+
+/* ================================= */
+/* SEARCH */
+/* ================================= */
+
+.e-search {
+  width: 220px !important;
+}
+
+.e-toolbar {
+  padding: 10px;
+}
+
+.e-toolbar .e-input-group {
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+/* ================================= */
+/* DARK THEME */
+/* ================================= */
+
+body.dark-theme {
+  background: white;
+  color: #1e293b;
+}
+
+/* ================================= */
+/* DASHBOARD */
+/* ================================= */
+
+body.dark-theme .dashboard-container {
+  background: white;
+}
+
+/* ================================= */
+/* HEADER */
+/* ================================= */
+
+body.dark-theme .top-header {
+  background: linear-gradient(90deg,
+      #6366f1,
+      #4f46e5);
+}
+
+/* ================================= */
+/* DARK GRID */
+/* ================================= */
+
+body.dark-theme .e-grid {
+  background: white !important;
+  color: #1e293b !important;
+}
+
+/* ================================= */
+/* DARK GRID HEADER */
+/* ================================= */
+
+body.dark-theme .e-grid .e-headercell {
+  background: #6366f1 !important;
+  color: white !important;
+}
+
+/* ================================= */
+/* DARK GRID ROW HOVER */
+/* ================================= */
+
+body.dark-theme .e-row:hover {
+  background: #4f46e5 !important;
+}
+
+/* ================================= */
+/* DARK PAGER */
+/* ================================= */
+
+body.dark-theme .e-pager .e-currentitem {
+  background: #818cf8 !important;
+
+  color: white !important;
+}
+
+/* ================================= */
+/* DARK BUTTONS */
+/* ================================= */
+
+body.dark-theme button {
+  background: #6366f1;
+  color: white;
+}
+
+body.dark-theme button:hover {
+  background: #818cf8;
+}
+
+/* ================================= */
+/* DARK SELECT */
+/* ================================= */
+
+body.dark-theme select {
+  background: white;
+  color: #4f46e5;
+  border: 1px solid #818cf8;
+}
+
+/* ================================= */
+/* DARK SEARCH */
+/* ================================= */
+
+body.dark-theme .e-toolbar {
+  background: white !important;
+}
+
+body.dark-theme .e-input-group {
+  background: white !important;
+  border: 1px solid #818cf8 !important;
+}
+
+body.dark-theme input {
+  color: #4f46e5 !important;
+}
+
+input,
+select {
+  background: #fdf2f8;
+  color: #881337;
+  border: 1px solid #f9a8d4;
+}
+
+/* Placeholder */
+
+input::placeholder {
+  color: #be185d;
+}
+
+/* ================================= */
+/* DARK THEME INPUTS */
+/* ================================= */
+
+body.dark-theme input,
+body.dark-theme select {
+  background: #eef2ff;
+
+  color: #4338ca;
+
+  border: 1px solid #818cf8;
+}
+
+/* Dark Placeholder */
+
+body.dark-theme input::placeholder {
+  color: #6366f1;
+}
+
+/* LIGHT THEME */
+
+.theme-btn {
+  background: white !important;
+  color: #be185d !important;
+  font-weight: 600 !important;
+}
+
+.theme-btn:hover {
+  background: #fdf2f8 !important;
+  color: #9d174d !important;
+}
+
+/* DARK THEME */
+
+body.dark-theme .theme-btn {
+  background: white !important;
+  color: #4f46e5 !important;
+}
+
+body.dark-theme .theme-btn:hover {
+  background: #eef2ff !important;
+  color: #4338ca !important;
+}

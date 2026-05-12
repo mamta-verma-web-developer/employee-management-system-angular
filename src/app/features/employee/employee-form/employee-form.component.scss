@@ -1,0 +1,150 @@
+.form-container{
+  width:100%;
+  max-width:500px;
+  margin:40px auto;
+  padding:30px;
+  background:white;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.form-container h2{
+  margin-bottom:25px;
+  text-align:center;
+  color:#fbcfe8;
+  font-size:28px;
+  font-weight:700;
+}
+
+form{
+  display:flex;
+  flex-direction:column;
+}
+
+/* Form Group */
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  margin-bottom:18px;
+}
+
+/* Labels */
+
+.form-group label{
+  margin-bottom:8px;
+  font-weight:600;
+  color:#374151;
+}
+
+/* Inputs */
+
+input,
+select{
+  padding:12px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  font-size:14px;
+  outline:none;
+  transition:0.3s;
+}
+
+/* Focus */
+
+input:focus,
+select:focus{
+  border-color:#fbcfe8;
+  box-shadow:0 0 0 3px rgba(99,102,241,0.2);
+}
+
+/* Button */
+
+button{
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#fbcfe8;
+  color:white;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#4f46e5;
+}
+
+/* Preview Image */
+
+.preview-image{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:15px;
+  border:2px solid #ddd;
+}
+
+/* Error */
+
+.error{
+  color:#dc2626;
+  margin-top:6px;
+  font-size:13px;
+}
+
+/* ========================= */
+/* Pink Theme */
+/* ========================= */
+
+body.dark-theme .form-container{
+  background:white;
+}
+
+body.dark-theme .form-container h2{
+  color:#f9a8d4;
+}
+
+body.dark-theme .form-group label{
+  color:#881337;
+}
+
+body.dark-theme input,
+body.dark-theme select{
+  background:white;
+  color:#4f46e5;
+  border:1px solid #818cf8;
+}
+
+body.dark-theme input:focus,
+body.dark-theme select:focus{
+  border-color:#f9a8d4;
+  box-shadow:0 0 0 3px rgba(236,72,153,0.2);
+}
+
+body.dark-theme button{
+  background:#f9a8d4;
+}
+
+body.dark-theme button:hover{
+  background:#db2777;
+}
+
+/* Responsive */
+
+@media(max-width:500px){
+  .form-container{
+    width:95%;
+    padding:20px;
+  }
+
+}
+@media(max-width:768px){
+  .form-container{
+    width:95%;
+    padding:20px;
+    margin:20px auto;
+  }
+
+}
