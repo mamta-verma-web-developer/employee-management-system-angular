@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../../../shared/components/confirm-dialog/confirm-dialog.component';
 import { GridModule, PageService, SortService, FilterService, ToolbarService } from '@syncfusion/ej2-angular-grids';
+import { Subject, take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,8 +30,8 @@ import { GridModule, PageService, SortService, FilterService, ToolbarService } f
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit {
-
+export class DashboardComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
   private employeeService = inject(EmployeeService);
   private dialog = inject(MatDialog);
   private employeeStore = inject(EmployeeStore);
@@ -51,7 +52,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getEmployees(): void {
-    this.employeeService.getEmployees()
+    this.employeeService.getEmployees().pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
           this.allEmployees = response;
@@ -87,7 +88,7 @@ export class DashboardComponent implements OnInit {
     .subscribe(result => {
         if (result) {
           this.employeeService
-            .deleteEmployee(data.id!)
+            .deleteEmployee(data.id!).pipe(takeUntil(this.destroy$))
             .subscribe(() => {
               this.snackBar.open(
                 'Employee Deleted Successfully',
@@ -145,4 +146,9 @@ export class DashboardComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
+  ngOnDestroy() {
+   this.destroy$.next();
+   this.destroy$.complete();
+}
 }
