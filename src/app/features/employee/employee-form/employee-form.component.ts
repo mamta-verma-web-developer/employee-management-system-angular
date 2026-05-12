@@ -1,9 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../../core/services/employee.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-employee-form',
@@ -15,13 +16,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.scss'
 })
-export class EmployeeFormComponent implements OnInit {
+export class EmployeeFormComponent implements OnInit, OnDestroy {
 
   private fb = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
   private employeeService = inject(EmployeeService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private destroy$ = new Subject<void>();
+
   employeeId!: any;
   previewUrl: string = '';
   employeeForm = this.fb.group({
@@ -41,7 +44,7 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   getEmployeeById(): void {
-    this.employeeService.getEmployeeById(this.employeeId)
+    this.employeeService.getEmployeeById(this.employeeId).pipe(takeUntil(this.destroy$))
       .subscribe((response) => {
         this.employeeForm.patchValue(response);
         this.previewUrl = response.image || '';
@@ -68,7 +71,7 @@ export class EmployeeFormComponent implements OnInit {
         .updateEmployee(
           this.employeeId,
           this.employeeForm.value as any
-        )
+        ).pipe(takeUntil(this.destroy$))
         .subscribe(() => {
 
           this.snackBar.open(
@@ -90,7 +93,7 @@ export class EmployeeFormComponent implements OnInit {
       this.employeeService
         .addEmployee(
           employeeData
-        )
+        ).pipe(takeUntil(this.destroy$))
         .subscribe(() => {
 
           this.snackBar.open(
@@ -105,4 +108,10 @@ export class EmployeeFormComponent implements OnInit {
         });
     }
   }
+
+  ngOnDestroy() {
+  this.destroy$.next();
+  this.destroy$.complete();
+}
+  
 }

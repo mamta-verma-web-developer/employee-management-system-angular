@@ -10,7 +10,6 @@ export class EmployeeService {
 
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:3000/employees';
-  // private apiUrl = 'http://localhost:3000/employees-test';   // For check error.interceptor.ts
 
   getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.apiUrl);
